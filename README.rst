@@ -6,12 +6,12 @@ Set of algorithms and structures related to geodesy.
 API
 ---
 
-geo.spheroid
+geo.sphere
 ~~~~~~~~~~~~
 
 Functions onto sphere
 
-geo.spheroid.approximate_distance
+geo.sphere.approximate_distance
 _________________________________
 
 .. code-block:: python
@@ -21,7 +21,7 @@ _________________________________
 Approximate calculation distance
 (expanding the trigonometric functions around the midpoint)
 
-geo.spheroid.haversine_distance
+geo.sphere.haversine_distance
 _______________________________
 
 .. code-block:: python
@@ -32,7 +32,7 @@ Calculating haversine distance between two points (see https://en.wikipedia.org/
 
 Is numerically better-conditioned for small distances
 
-geo.spheroid.distance
+geo.sphere.distance
 _____________________
 
 .. code-block:: python
@@ -41,8 +41,8 @@ _____________________
 
 Calculating great-circle distance (see https://en.wikipedia.org/wiki/Great-circle_distance)
 
-geo.spheroid.bearing
-____________________
+geo.sphere.bearing
+__________________
 
 .. code-block:: python
 
@@ -51,8 +51,8 @@ ____________________
 Calculating initial bearing between two points
 (see http://www.movable-type.co.uk/scripts/latlong.html)
 
-geo.spheroid.final_bearing
-__________________________
+geo.sphere.final_bearing
+________________________
 
 .. code-block:: python
 
@@ -60,8 +60,8 @@ __________________________
 
 Calculating finatl bearing (initial bering + 180) between two points
 
-geo.spheroid.destination
-________________________
+geo.sphere.destination
+______________________
 
 .. code-block:: python
 
@@ -71,15 +71,15 @@ Given a start point, initial bearing, and distance, this will
 calculate the destina­tion point and final bearing travelling
 along a (shortest distance) great circle arc. (see http://www.movable-type.co.uk/scripts/latlong.htm)
 
-geo.spheroid.approximate_destination
-____________________________________
+geo.sphere.approximate_destination
+__________________________________
 
 .. code-block:: python
 
     def approximate_destination(point, distance, theta):
 
-geo.spheroid.from4326_to3857
-____________________________
+geo.sphere.from4326_to3857
+__________________________
 
 .. code-block:: python
 
@@ -91,8 +91,8 @@ Reproject point from EPSG:4326 (https://epsg.io/4326) to EPSG:3857 (https://epsg
         E = R*(λ - λo)
         N = R*ln(tan(π/4+φ/2))
 
-geo.spheroid.from3857_to4326
-____________________________
+geo.sphere.from3857_to4326
+__________________________
 
 .. code-block:: python
 

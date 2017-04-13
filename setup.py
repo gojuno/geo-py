@@ -25,13 +25,13 @@ extensions = cythonize([
 
 setup(
     name='geo-py',
-    version='0.1',
+    version='0.2',
     author='Alexander Verbitsky',
     author_email='habibutsu@gmail.com',
     maintainer='Alexander Verbitsky',
     maintainer_email='habibutsu@gmail.com',
     description='Set of algorithms and structures related to geodesy and geospatial data',
-    long_description=read('README.md'),
+    long_description=read('README.rst'),
     keywords='geodesy, haversine distance, great circle distance, vincenty\'s formula',
     url='https://github.com/gojuno/geo-py',
     packages=['geo'],

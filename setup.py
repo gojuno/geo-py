@@ -25,7 +25,7 @@ extensions = cythonize([
 
 setup(
     name='geo-py',
-    version='0.3',
+    version='0.4',
     author='Alexander Verbitsky',
     author_email='habibutsu@gmail.com',
     maintainer='Alexander Verbitsky',

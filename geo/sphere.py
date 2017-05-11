@@ -1,4 +1,5 @@
-    # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
+import sys
 from math import (
     degrees, radians,
     sin, cos, asin, tan, atan, atan2, pi,
@@ -167,23 +168,29 @@ def _py_from3857_to4326(point):
     lat = degrees(2.0 * atan(exp(y/EARTH_EQUATORIAL_RADIUS)) - HALF_PI)
     return (lon, lat)
 
-
-try:
-    from ._sphere import (
-        _approximate_distance,
-        _haversine_distance,
-        _distance,
-        _from4326_to3857,
-        _from3857_to4326,
-    )
-    approximate_distance = _approximate_distance
-    haversine_distance = _haversine_distance
-    distance = _distance
-    from4326_to3857 = _from4326_to3857
-    from3857_to4326 = _from3857_to4326
-except ImportError:  # pragma: no cover
+if '__pypy__' in sys.builtin_module_names:
     approximate_distance = _py_approximate_distance
     haversine_distance = _py_haversine_distance
     distance = _py_distance
     from4326_to3857 = _py_from4326_to3857
     from3857_to4326 = _py_from3857_to4326
+else:
+    try:
+        from ._sphere import (
+            _approximate_distance,
+            _haversine_distance,
+            _distance,
+            _from4326_to3857,
+            _from3857_to4326,
+        )
+        approximate_distance = _approximate_distance
+        haversine_distance = _haversine_distance
+        distance = _distance
+        from4326_to3857 = _from4326_to3857
+        from3857_to4326 = _from3857_to4326
+    except ImportError:  # pragma: no cover
+        approximate_distance = _py_approximate_distance
+        haversine_distance = _py_haversine_distance
+        distance = _py_distance
+        from4326_to3857 = _py_from4326_to3857
+        from3857_to4326 = _py_from3857_to4326

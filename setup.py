@@ -9,7 +9,7 @@ except ImportError:
     def cythonize(extensions): return extensions
     ext = '.c'
 
-MIN_PYTHON = (3, 0)
+MIN_PYTHON = (2, 7)
 if sys.version_info < MIN_PYTHON:
     sys.stderr.write("Python {}.{} or later is required\n".format(*MIN_PYTHON))
     sys.exit(1)
@@ -25,7 +25,7 @@ extensions = cythonize([
 
 setup(
     name='geo-py',
-    version='0.4',
+    version='0.5',
     author='Alexander Verbitsky',
     author_email='habibutsu@gmail.com',
     maintainer='Alexander Verbitsky',

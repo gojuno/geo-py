@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+import sys
 from math import (
     degrees, radians,
     sin, cos, asin, tan, atan, atan2, pi,
@@ -123,17 +125,21 @@ def _py_from3395_to4326(point, ellipsoid=WGS84):
     lat = degrees(phi)
     return (lon, lat)
 
-
-try:
-    from ._ellipsoid import (
-        _distance,
-        _from4326_to3395,
-        _from3395_to4326
-    )
-    distance = _distance
-    from4326_to3395 = _from4326_to3395
-    from3395_to4326 = _from3395_to4326
-except ImportError:  # pragma: no cover
+if '__pypy__' in sys.builtin_module_names:
     distance = _py_distance
     from4326_to3395 = _py_from4326_to3395
     from3395_to4326 = _py_from3395_to4326
+else:
+    try:
+        from ._ellipsoid import (
+            _distance,
+            _from4326_to3395,
+            _from3395_to4326
+        )
+        distance = _distance
+        from4326_to3395 = _from4326_to3395
+        from3395_to4326 = _from3395_to4326
+    except ImportError:  # pragma: no cover
+        distance = _py_distance
+        from4326_to3395 = _py_from4326_to3395
+        from3395_to4326 = _py_from3395_to4326

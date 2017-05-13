@@ -1,5 +1,5 @@
+# -*- coding: utf-8 -*-
 from math import pi
-from collections import namedtuple
 
 # https://en.wikipedia.org/wiki/Earth_radius#Mean_radius
 EARTH_MEAN_RADIUS = 6371008.8
@@ -13,8 +13,21 @@ I_EARTH_EQUATORIAL_METERS_PER_DEGREE = 1 / EARTH_EQUATORIAL_METERS_PER_DEGREE
 HALF_PI = pi / 2.0
 QUARTER_PI = pi / 4.0
 
-# https://en.wikipedia.org/wiki/Geodetic_datum
-Datum = namedtuple('Datum', ['a', 'b', 'e', 'f', 'w'])
+
+class Datum:
+    '''
+        https://en.wikipedia.org/wiki/Geodetic_datum
+    '''
+
+    __slots__ = ('a', 'b', 'e', 'f', 'w')
+
+    def __init__(self, a, b, e, f, w):
+        self.a = a
+        self.b = b
+        self.e = e
+        self.f = f
+        self.w = w
+
 
 # https://epsg.io/7030-ellipsoid
 WGS84 = Datum(
@@ -24,7 +37,7 @@ WGS84 = Datum(
     b=6356752.314245179, # b = a * (1 - f)
 # derived ellipsoid parameters
     # eccentricity
-    e = 0.08181919084262149, # e = (2*f - f**2)**0.5
+    e=0.08181919084262149, # e = (2*f - f**2)**0.5
     # flattening
     f=0.0033528106647474805, # 1/298.257223563
     # rotation speed

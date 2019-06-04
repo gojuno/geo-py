@@ -6,6 +6,8 @@ Set of algorithms and structures related to geodesy.
 API
 ---
 
+In all functions below, `point` parameters are latitude-longitude pairs.
+
 geo.sphere
 ~~~~~~~~~~~~
 
